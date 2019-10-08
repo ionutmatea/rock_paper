@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Rock Paper Scissors
+    </title>
+</head>
+
+<body>
+    <script>
+        function computerPlay()
+        {
+            let x;
+            if(x%3==0)return "rock";
+            else if(x%3==1)return "paper";
+            else return "scissors";
+        }
+        function playRound(playerSelection, computerSelection)
+        {
+            playerSelection=playerSelection.toLowerCase();
+            computerSelection=computerSelection.toLowerCase();
+            if(playerSelection=="rock" && computerSelection=="Paper")return "You Lose! Paper beats Rock";
+        }
+        function game()
+        {
+            
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
