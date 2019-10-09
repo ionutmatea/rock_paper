@@ -9,30 +9,76 @@
 
 <body>
     <script>
-        function computerPlay()
-        {
-            let x=Math.floor(Math.random() * 20);;
-            if(x%3==0)return "rock";
-            else if(x%3==1)return "paper";
+        let cw = 0, pw = 0, tn = 0;
+        function computerPlay() {
+            let x = Math.floor(Math.random() * 20);;
+            if (x % 3 == 0) return "rock";
+            else if (x % 3 == 1) return "paper";
             else return "scissors";
         }
-        function playRound(playerSelection, computerSelection)
-        {
-            playerSelection=playerSelection.toLowerCase();
-            computerSelection=computerSelection.toLowerCase();
-            if(playerSelection=="rock" && computerSelection=="paper")return "                   You Lose! Paper beats Rock";
+        function playRound(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerSelection.toLowerCase();
+            if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors") {
+                cw++;
+                return "                      Invalid Input!! You Lose!";
+                
+            }
+            if (playerSelection == computerSelection) {
+                tn++;
+                return "                      It's a tie!";
+                
+            }
+            if (playerSelection == "rock" && computerSelection == "paper") {
+                cw++;
+                return "                      You Lose! Paper beats Rock!";
+                
+            }
+            if (playerSelection == "rock" && computerSelection == "scissors") {
+                pw++;
+                return "                      You Win! Rock beats Scissors!";
+                
+            }
+            if (playerSelection == "paper" && computerSelection == "rock") {
+                pw++;
+                return "                      You Win! Paper beats Rock!";
+                
+            }
+            if (playerSelection == "paper" && computerSelection == "scissors") {
+                cw++;
+                return "                      You Lose! Scissors beats Paper";
+                
+            }
+            if (playerSelection == "scissors" && computerSelection == "paper") {
+                pw++;
+                return "                      You Win! Scissors beats Paper!";
+                
+            }
+            if (playerSelection == "scissors" && computerSelection == "rock") {
+                cw++;
+                return "                      You Lose! Rock beats Scissors!";
+                
+            }
         }
-        function game()
-        {
-            console.log("               Welcome to Rock, Paper, Scissors! Please enter");
-            console.log("               your choice in the prompt!");
-            for(let i=1; i<5; i++)
-            {
-                let mes=prompt("Choose rock, paper, scissors:");
-                let mesc="paper";
-                console.log(mes);
+        function game() {
+            console.log("                      Welcome to Rock, Paper, Scissors! Please");
+            console.log("                      enter your choice in the prompt!");
+            let numberOfRuns = prompt("Choose the number of rounds:");
+            console.log("                      You chose to play " + numberOfRuns + " rounds!");
+            for (let i = 1; i <= numberOfRuns; i++) {
+                let mes = prompt("Choose rock, paper, scissors:");
+                let mesc = computerPlay();
                 console.log(playRound(mes, mesc));
             }
+            if (cw > pw) {
+                console.log("                      You lost, the computer beat you with " + cw + " to " + pw + ".");
+                console.log("Number of ties: " + tn);
+            }
+            else if (cw < pw) {
+                console.log("                      You won, beating the computer with " + pw + " to " + cw + ".");
+                console.log("Number of ties: " + tn);
+            }
+            else console.log("                      It's a tie! The game ended!");
         }
         game();
 
