@@ -20,15 +20,17 @@
         {
             playerSelection=playerSelection.toLowerCase();
             computerSelection=computerSelection.toLowerCase();
-            if(playerSelection=="rock" && computerSelection=="Paper")return "You Lose! Paper beats Rock";
+            if(playerSelection=="rock" && computerSelection=="paper")return "                   You Lose! Paper beats Rock";
         }
         function game()
         {
+            console.log("               Welcome to Rock, Paper, Scissors! Please enter");
+            console.log("               your choice in the prompt!");
             for(let i=1; i<5; i++)
             {
                 let mes=prompt("Choose rock, paper, scissors:");
+                let mesc="paper";
                 console.log(mes);
-                let mesc=computerPlay();
                 console.log(playRound(mes, mesc));
             }
         }
